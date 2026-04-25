@@ -24,3 +24,8 @@ git status
 
 git remote add origin https://github.com/samuelrxm-beep/maquetado_web.git
 (Añade la dirección se su reportorio se hace o ejecuta una única vez) 
+
+al modificarlo hacer
+git add .
+git commit -m "Versión de subida"
+git push
