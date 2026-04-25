@@ -23,4 +23,4 @@ git status
 (comprueba el estado de la rama)
 
 git remote add origin https://github.com/samuelrxm-beep/maquetado_web.git
-(Añade la dirección se su reportorio se hace o ejecuta una única vez)
+(Añade la dirección se su reportorio se hace o ejecuta una única vez) 
