@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Practica 11</h1>
+    <h2>Tablas</h2>
+    <!-- La etiqueta table se utiliza para crear tablas en HTMl. Todo el contenido de la tabla, incluyendo filas y celdas, se define dentro de estas etiquetas. -->
+    
+    <!-- La etiqueta tr se utiliza para crear filas en la tabla cada fila puede contener una o mas celdas, que se definenen utilizando la etiqueta td (para celdas de datos) o th (para celdas de encabezado). -->
+    
+    <!-- La etiqueta td se utiliza para crear celdas en la tabla. cada etiqueta td representa una columna en la tabla -->
+    
+    <!-- LA etiqueta th define una celda de encabezado de una fila. cada etiqueta th representa un encabezado en la tabla -->
+    
+    <table border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+        </tr>
+        <tr>
+            <td>Juan</td>
+            <td>Perez</td>
+            <td>30</td>
+        </tr>
+        <tr>
+            <td>Ana</td>
+            <td>Gomez</td>
+            <td>25</td>
+        </tr>
+    </table>
+    <br>
+
+    <table border="1">
+        <tr>
+            <th>encabezado 1</th> <!-- celda de enzabezado -->
+            <th>encabezado 2</th> <!-- celda de enzabezado -->
+            <th>encabezado 3</th> <!-- celda de enzabezado -->
+        </tr>
+        <tr>
+            <td>Dato 1</td> <!-- celda de datos -->
+            <td>Dato 2</td> <!-- celda de datos -->
+            <td>Dato 3</td> <!-- celda de datos -->
+        </tr>
+        <tr>
+            <td>Dato 4</td> <!-- celda de datos -->
+            <td>Dato 5</td> <!-- celda de datos -->
+            <td>Dato 6</td> <!-- celda de datos -->
+        </tr>
+    </table>
+    <br>
+
+    <table border="1">
+        <caption>Paises y Capitales</caption>
+        <tr>
+            <th>País</th>
+            <th>Capital</th>
+        </tr>
+        <tr>
+            <td>Mexico</td>
+            <td>Ciudad de Mexico</td>
+        </tr>
+        <tr>
+            <td>España</td>
+            <td>Madrid</td>
+        </tr>
+        <tr>
+            <td>Francia</td>
+            <td>Paris</td>
+        </tr>
+        <tr>
+            <td>Italia</td>
+            <td>Roma</td>
+        </tr>
+    </table>
+    <br>
+
+    <table border="1"> <!-- tabla de celdas combinadas -->
+        <tr>
+            <td colspan="2">Mundial de futbol</td> <!-- Combina dos columnas en una sola celda -->
+        </tr>
+        <tr>
+            <td rowspan="2">paises con mayoria de goles</td> <!-- Combina dos filas en una sola celda -->
+            <td>brasil</td> <td>230</td>
+        </tr>
+        <tr>
+            <td>Alemania</td> <td>180</td>
+        </tr>
+        <tr>
+            <td>Argentina</td> <td>150</td>
+        </tr>
+    </table>
+
+</body>
+</html>
