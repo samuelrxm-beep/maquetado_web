@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recibo Green &amp; Blue Aquamarine</title>
+  <!-- Font Awesome para ícono WhatsApp -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Google Fonts: Oswald (sello), Lato (cuerpo) -->
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="recibo.css" />
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════
+       BOTÓN DESCARGAR PDF (solo visible en pantalla)
+  ════════════════════════════════════════════ -->
+  <div class="btn-pdf-wrap no-print">
+    <button class="btn-pdf" onclick="window.print()">
+      <i class="fa-solid fa-file-pdf"></i> Descargar / Imprimir PDF
+    </button>
+    <button class="btn-limpiar" onclick="limpiarRecibo()">
+      <i class="fa-solid fa-eraser"></i> Limpiar Recibo
+    </button>
+    <p class="btn-hint">Usa "Guardar como PDF" en el diálogo de impresión (Ctrl + P)</p>
+  </div>
+
+  <!-- ════════════════════════════════════════════
+       RECIBO PRINCIPAL
+  ════════════════════════════════════════════ -->
+  <div class="recibo">
+
+    <!-- ──────────────────────────────────────────
+         ENCABEZADO: Logo | Servicios+Tel+Fechas | RECIBO
+    ────────────────────────────────────────── -->
+    <div class="header">
+
+      <!-- Columna Logo -->
+      <div class="logo-col">
+        <img src="logo-recibo.png" class="logo-img" alt="Green &amp; Blue Aquamarine" />
+      </div>
+
+      <!-- Columna Central: servicios, teléfono, fechas -->
+      <div class="centro-col">
+
+        <!-- Servicios (checkboxes) -->
+        <div class="checkboxes-row">
+          <label class="checkbox-item">
+            <input type="checkbox" /> REHABILITACIÓN
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" /> ENTRETENIMIENTO
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" /> MASAJES
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" /> NATACIÓN
+          </label>
+        </div>
+
+        <!-- Teléfono con ícono WhatsApp de Font Awesome -->
+        <div class="telefono-row">
+          <i class="fa-brands fa-whatsapp wa-icon"></i>
+          <span>318 868 8008 &nbsp;/&nbsp; 310 740 6038</span>
+        </div>
+
+        <!-- Fechas: inputs tipo date integrados en cuadros -->
+        <div class="fechas-row">
+
+          <div class="fecha-grupo">
+            <span class="fecha-label">Fecha<br />Inicio</span>
+            <div class="fecha-input-wrap">
+              <input type="date" class="fecha-input" />
+            </div>
+          </div>
+
+          <div class="fecha-grupo">
+            <span class="fecha-label">Fecha<br />Finalización</span>
+            <div class="fecha-input-wrap">
+              <input type="date" class="fecha-input" />
+            </div>
+          </div>
+
+        </div>
+
+      </div><!-- /centro-col -->
+
+      <!-- Columna RECIBO: título encima, número sellado dentro -->
+      <div class="recibo-col">
+        <div class="recibo-titulo-ext">RECIBO</div>
+        <div class="recibo-box">
+          <div class="recibo-num-row">
+            <span class="no-text">N<sup>o</sup></span>
+            <span class="num-valor stamp">0457.</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /header -->
+
+
+    <!-- ──────────────────────────────────────────
+         SEÑOR / DIRECCIÓN
+    ────────────────────────────────────────── -->
+    <div class="row-senor">
+      <div class="field senor">
+        <span class="field-label">Señor (es):</span>
+        <input type="text" class="field-input" placeholder="" />
+      </div>
+      <div class="field">
+        <span class="field-label">Dirección:</span>
+        <input type="text" class="field-input" placeholder="" />
+      </div>
+    </div>
+
+
+    <!-- ──────────────────────────────────────────
+         DATOS PERSONALES
+    ────────────────────────────────────────── -->
+    <div class="row-datos">
+      <div class="dato tel">
+        <span class="dl">Teléfono:</span>
+        <input type="tel" class="dinput" placeholder="" />
+      </div>
+      <div class="dato ciu">
+        <span class="dl">Ciudad:</span>
+        <input type="text" class="dinput" placeholder="" />
+      </div>
+      <div class="dato">
+        <span class="dl">Edad:</span>
+        <input type="text" class="dinput" placeholder="" />
+      </div>
+      <div class="dato">
+        <span class="dl">Peso:</span>
+        <input type="text" class="dinput" placeholder="" />
+      </div>
+      <div class="dato">
+        <span class="dl">Talla:</span>
+        <input type="text" class="dinput" placeholder="" />
+      </div>
+      <div class="dato">
+        <span class="dl">PPL:</span>
+        <input type="text" class="dinput" placeholder="" />
+      </div>
+    </div>
+
+
+    <!-- ──────────────────────────────────────────
+         TABLA PRINCIPAL
+    ────────────────────────────────────────── -->
+    <table class="tabla">
+      <thead>
+        <tr>
+          <th class="th-desc">DESCRIPCIÓN</th>
+          <th class="th-vr">VR. TOTAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Fila 1: Descripción editable | VR. TOTAL abarca filas 1 y 2 -->
+        <tr>
+          <td class="td-contenido">
+            <textarea class="textarea-desc" placeholder="Ingrese la descripción del servicio..."></textarea>
+          </td>
+          <td class="td-vr" rowspan="2">
+            <div class="vr-inputs">
+              <input type="number" class="vr-item" placeholder="$0" min="0" oninput="calcularTotal()" />
+              <input type="number" class="vr-item" placeholder="$0" min="0" oninput="calcularTotal()" />
+              <input type="number" class="vr-item" placeholder="$0" min="0" oninput="calcularTotal()" />
+              <input type="number" class="vr-item" placeholder="$0" min="0" oninput="calcularTotal()" />
+              <input type="number" class="vr-item" placeholder="$0" min="0" oninput="calcularTotal()" />
+            </div>
+          </td>
+        </tr>
+        <!-- Fila 2: OBSERVACIONES -->
+        <tr>
+          <td class="td-obs">
+            <div class="obs-header"><strong>OBSERVACIONES</strong></div>
+            <textarea class="textarea-obs" placeholder="Ingrese observaciones..."></textarea>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td class="td-total-label">TOTAL</td>
+          <td class="td-total-val">
+            <span class="total-signo">$</span>
+            <input type="text" class="total-input" id="total-resultado" placeholder="0.00" readonly />
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+
+
+    <!-- ──────────────────────────────────────────
+         FIRMAS
+    ────────────────────────────────────────── -->
+    <div class="firmas">
+      <div class="firma">
+        <div class="firma-linea"></div>
+        <div class="firma-texto">FIRMA DEL INSTRUCTOR</div>
+      </div>
+      <div class="firma">
+        <div class="firma-linea"></div>
+        <div class="firma-texto">FIRMA DEL USUARIO</div>
+      </div>
+    </div>
+
+  </div><!-- /recibo -->
+
+  <!-- ════════════════════════════════════════════
+       SCRIPTS: Limpiar recibo y calcular total
+  ════════════════════════════════════════════ -->
+  <script>
+    /* ── Calcular total sumando todos los inputs VR ── */
+    function calcularTotal() {
+      var inputs = document.querySelectorAll('.vr-item');
+      var suma = 0;
+      inputs.forEach(function(inp) {
+        var val = parseFloat(inp.value);
+        if (!isNaN(val) && val > 0) suma += val;
+      });
+      var resultado = document.getElementById('total-resultado');
+      resultado.value = suma > 0
+        ? suma.toLocaleString('es-CO', { minimumFractionDigits: 0, maximumFractionDigits: 0 })
+        : '';
+    }
+
+    /* ── Limpiar todo el recibo ── */
+    function limpiarRecibo() {
+      if (!confirm('¿Limpiar todos los campos del recibo?')) return;
+
+      /* Inputs de texto y número */
+      document.querySelectorAll('.recibo input[type="text"], .recibo input[type="tel"], .recibo input[type="number"]')
+        .forEach(function(el) { el.value = ''; });
+
+      /* Inputs de fecha */
+      document.querySelectorAll('.recibo input[type="date"]')
+        .forEach(function(el) { el.value = ''; });
+
+      /* Textareas */
+      document.querySelectorAll('.recibo textarea')
+        .forEach(function(el) { el.value = ''; });
+
+      /* Checkboxes */
+      document.querySelectorAll('.recibo input[type="checkbox"]')
+        .forEach(function(el) { el.checked = false; });
+
+      /* Total */
+      document.getElementById('total-resultado').value = '';
+    }
+  </script>
+
+</body>
+</html>

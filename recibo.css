@@ -1,0 +1,707 @@
+/* ================================================
+   GREEN & BLUE AQUAMARINE — Recibo Professional
+   style.css
+   Variables globales de color
+================================================ */
+:root {
+  --verde:          #2f7a1e;
+  --azul:           #1850b4;
+  --azul-borde:     #1d5fbf;
+  --rojo:           #cc2b1e;
+  --blanco:         #ffffff;
+  --azul-suave:     rgba(29, 95, 191, 0.10);   /* fondo sutil */
+  --verde-suave:    rgba(47, 122, 30, 0.08);
+  --gris-campo:     #f7f9ff;
+}
+
+/* ================================================
+   RESET BASE
+================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  background: #d8e2f0;
+  font-family: 'Lato', 'Arial Narrow', Arial, sans-serif;
+  font-size: 13px;
+  color: #111;
+}
+
+/* ================================================
+   BOTÓN PDF (solo pantalla, nunca imprime)
+================================================ */
+.btn-pdf-wrap {
+  text-align: center;
+  margin: 18px auto 6px;
+}
+
+.btn-pdf {
+  background: var(--azul);
+  color: #fff;
+  border: none;
+  padding: 10px 28px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 3px 10px rgba(24, 80, 180, 0.35);
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn-pdf:hover {
+  background: #1340a0;
+  transform: translateY(-1px);
+}
+
+.btn-limpiar {
+  background: #fff;
+  color: #b03020;
+  border: 2px solid #cc2b1e;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  margin-left: 10px;
+  transition: background 0.2s, color 0.2s, transform 0.1s;
+}
+
+.btn-limpiar:hover {
+  background: #cc2b1e;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.btn-pdf i {
+  margin-right: 6px;
+}
+
+.btn-hint {
+  font-size: 11px;
+  color: #6a7fa0;
+  margin-top: 5px;
+}
+
+/* ================================================
+   CONTENEDOR PRINCIPAL DEL RECIBO
+================================================ */
+.recibo {
+  width: 275mm;
+  background: var(--blanco);
+  border: 2.5px solid var(--azul-borde);
+  border-radius: 4px;
+  margin: 10px auto 30px;
+  padding: 6mm 8mm 7mm;
+  box-shadow: 0 4px 24px rgba(24, 80, 180, 0.13);
+}
+
+/* ================================================
+   ENCABEZADO — 3 columnas
+================================================ */
+.header {
+  display: grid;
+  grid-template-columns: 280px 1fr 168px;
+  column-gap: 6px;
+  align-items: start;
+  margin-bottom: 4px;
+}
+
+/* ── Logo ── */
+.logo-col {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.logo-img {
+  width: 275px;
+  height: auto;
+  display: block;
+  /* Logo tiene fondo negro → invertir para que se vea sobre blanco */
+  filter: invert(1) hue-rotate(180deg) saturate(1.4) brightness(0.92);
+}
+
+/* ── Columna central ── */
+.centro-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding-top: 2px;
+}
+
+/* Checkboxes — texto DESPUÉS del cuadro */
+.checkboxes-row {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  font-weight: 700;
+  color: var(--verde);
+  font-size: 11px;
+  cursor: pointer;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+  accent-color: var(--azul-borde);
+  flex-shrink: 0;
+}
+
+/* Teléfono con ícono WhatsApp de Font Awesome */
+.telefono-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  color: var(--azul);
+  font-weight: 700;
+}
+
+.wa-icon {
+  font-size: 20px;        /* ícono Font Awesome */
+  color: #25D366;         /* verde WhatsApp oficial */
+}
+
+/* ── Fechas con input[type=date] ── */
+.fechas-row {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+.fecha-grupo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fecha-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--verde);
+  line-height: 1.35;
+  text-align: right;
+}
+
+/* Envuelve el input date en un contenedor con fondo azul suave */
+.fecha-input-wrap {
+  background: var(--azul-suave);
+  border: 1.5px solid var(--azul-borde);
+  border-radius: 3px;
+  padding: 1px 3px;
+}
+
+.fecha-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 11px;
+  font-family: 'Lato', sans-serif;
+  color: var(--azul);
+  font-weight: 700;
+  width: 108px;
+  cursor: pointer;
+}
+
+/* ── Columna RECIBO: título fuera, número dentro ── */
+.recibo-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+/* Título "RECIBO" encima de la caja, en verde */
+.recibo-titulo-ext {
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--verde);
+  letter-spacing: 4px;
+  text-align: center;
+  padding-bottom: 3px;
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Caja que contiene solo el número */
+.recibo-box {
+  border: 2.5px solid var(--azul-borde);
+  background: var(--azul-suave);
+  text-align: center;
+  padding: 6px 10px 8px;
+  border-radius: 3px;
+  width: 100%;
+}
+
+.recibo-num-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0 2px;
+}
+
+.no-text {
+  font-size: 13px;
+  color: var(--rojo);
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* Número estilo sello: rotación ligera, tipografía Oswald */
+.num-valor.stamp {
+  font-size: 30px;
+  font-weight: 900;
+  color: var(--rojo);
+  font-family: 'Oswald', 'Courier New', monospace;
+  letter-spacing: 3px;
+  transform: rotate(-4deg) skewX(-2deg);
+  display: inline-block;
+  text-shadow:
+    1px 1px 0 rgba(180, 20, 10, 0.25),
+    0 0 8px rgba(204, 43, 30, 0.15);
+  opacity: 0.92;
+}
+
+/* ================================================
+   FILA SEÑOR / DIRECCIÓN
+================================================ */
+.row-senor {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
+  padding-bottom: 3px;
+  /* sin border-bottom — se quita la línea larga */
+  margin-bottom: 3px;
+}
+
+.field {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  flex: 1;
+}
+
+.field.senor { flex: 1.2; }
+
+.field-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--verde);
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Input que reemplaza la línea subrayada */
+.field-input {
+  flex: 1;
+  border: none;
+  border-bottom: 1.5px solid var(--azul-borde);
+  outline: none;
+  font-size: 12px;
+  font-family: 'Lato', sans-serif;
+  background: transparent;
+  color: #111;
+  padding: 1px 2px;
+  height: 18px;
+}
+
+.field-input:focus {
+  border-bottom-color: var(--azul);
+  background: var(--azul-suave);
+}
+
+/* ================================================
+   FILA DATOS PERSONALES
+================================================ */
+.row-datos {
+  display: flex;
+  gap: 6px;
+  align-items: flex-end;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--azul-borde);
+  margin-bottom: 0;
+}
+
+.dato      { display: flex; align-items: flex-end; gap: 3px; flex: 1; }
+.dato.tel  { flex: 2.5; }
+.dato.ciu  { flex: 1.6; }
+
+.dl {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--verde);
+  white-space: nowrap;
+}
+
+/* Input dentro de cada dato */
+.dinput {
+  flex: 1;
+  border: none;
+  border-bottom: 1.5px solid var(--azul-borde);
+  outline: none;
+  font-size: 11.5px;
+  font-family: 'Lato', sans-serif;
+  background: transparent;
+  color: #111;
+  padding: 0 2px;
+  height: 17px;
+  min-width: 20px;
+}
+
+.dinput:focus {
+  border-bottom-color: var(--azul);
+  background: var(--azul-suave);
+}
+
+/* ================================================
+   TABLA PRINCIPAL
+================================================ */
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  border: 2px solid var(--azul-borde);
+}
+
+.tabla th,
+.tabla td {
+  border: 2px solid var(--azul-borde);
+}
+
+/* Encabezado DESCRIPCIÓN — fondo azul muy suave */
+.th-desc {
+  width: 83%;
+  padding: 5px 8px;
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--verde);
+  text-align: center;
+  letter-spacing: 0.5px;
+  background: var(--azul-suave);
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Encabezado VR. TOTAL — fondo azul muy suave */
+.th-vr {
+  width: 17%;
+  padding: 5px 6px;
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--verde);
+  text-align: center;
+  background: var(--azul-suave);
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Área descripción grande — textarea editable */
+.td-contenido {
+  height: 58mm;
+  vertical-align: top;
+  padding: 4px;
+}
+
+.textarea-desc {
+  width: 100%;
+  height: 100%;
+  min-height: 55mm;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 12px;
+  font-family: 'Lato', sans-serif;
+  color: #111;
+  background: transparent;
+  line-height: 1.6;
+}
+
+/* Columna VR. TOTAL — inputs numéricos apilados */
+.td-vr {
+  vertical-align: top;
+  padding: 6px 4px;
+  background: transparent;
+}
+
+.vr-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  height: 100%;
+  padding: 2px 0;
+}
+
+.vr-item {
+  width: 100%;
+  border: none;
+  border-bottom: 1.5px solid var(--azul-borde);
+  outline: none;
+  font-size: 13px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  color: var(--azul);
+  background: transparent;
+  text-align: right;
+  padding: 2px 4px;
+ /* 1. Para Chrome, Safari, Edge y Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* 2. Para Firefox y navegadores modernos */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: none;
+}
+}
+
+.vr-item::-webkit-outer-spin-button,
+.vr-item::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.vr-item:focus {
+  border-bottom-color: var(--verde);
+  background: var(--azul-suave);
+}
+
+/* Fila OBSERVACIONES */
+.td-obs {
+  height: 22mm;
+  vertical-align: top;
+  padding: 5px 8px 4px;
+}
+
+.obs-header {
+  margin-bottom: 2px;
+}
+
+.obs-header strong {
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--verde);
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.textarea-obs {
+  width: 100%;
+  height: calc(100% - 18px);
+  min-height: 15mm;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 11.5px;
+  font-family: 'Lato', sans-serif;
+  color: #222;
+  background: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* ── Fila TOTAL (tfoot) ── */
+.tabla tfoot tr {
+  background: var(--azul-suave);
+}
+
+.td-total-label {
+  text-align: right;
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--verde);
+  letter-spacing: 1.5px;
+  padding: 5px 10px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.td-total-val {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 6px;
+  background: var(--azul-suave);
+}
+
+/* Símbolo $ en su propia celda interna */
+.total-signo {
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--azul);
+  flex-shrink: 0;
+}
+
+.total-input {
+  flex: 1;
+  border: none;
+  border-bottom: 1.5px solid var(--azul-borde);
+  outline: none;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  color: var(--azul);
+  background: transparent;
+  text-align: right;
+  padding: 0 3px;
+  min-width: 50px;
+  cursor: default;
+}
+
+/* ================================================
+   FIRMAS
+================================================ */
+.firmas {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 16mm;
+  padding: 0 12mm;
+  gap: 16mm;
+}
+
+.firma {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.firma-linea {
+  width: 100%;
+  border-top: 2px solid var(--azul-borde);
+  margin-bottom: 3px;
+}
+
+.firma-texto {
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--verde);
+  letter-spacing: 1px;
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ================================================
+   UTILIDADES
+================================================ */
+
+/* ================================================
+   RESPONSIVE — Móvil
+================================================ */
+@media (max-width: 900px) {
+  .recibo {
+    width: 98vw;
+    font-size: 11px;
+    padding: 4mm;
+  }
+  .header {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .logo-img {
+    width: 160px;
+  }
+  .recibo-col {
+    align-items: flex-start;
+  }
+  .firmas {
+    padding: 0 5mm;
+    gap: 10mm;
+    margin-top: 7mm;
+  }
+  .checkboxes-row {
+    gap: 6px;
+  }
+  .checkbox-item {
+    font-size: 10px;
+  }
+  .num-valor.stamp {
+    font-size: 22px;
+  }
+}
+
+/* ================================================
+   IMPRESIÓN — @media print
+   Tamaño carta horizontal, sin márgenes extraños.
+================================================ */
+@media print {
+
+  /* Ocultar botón PDF */
+  .no-print { display: none !important; }
+
+  html, body {
+    background: white;
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+  }
+
+  @page {
+    size: letter landscape;
+    margin: 7mm 8mm;
+  }
+
+  .recibo {
+    width: 100%;
+    margin: 0;
+    padding: 4mm 6mm;
+    border: 2px solid var(--azul-borde);
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+
+  /* Forzar colores exactos en impresión */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Campos de formulario: mostrar el texto sin decoración de input */
+  input, textarea {
+    border-color: var(--azul-borde) !important;
+    background: transparent !important;
+  }
+
+  .fecha-input-wrap {
+    background: var(--azul-suave) !important;
+  }
+
+  .th-desc,
+  .th-vr {
+    background: var(--azul-suave) !important;
+  }
+
+  /* td-vr sin fondo en impresión también */
+  .td-vr {
+    background: transparent !important;
+  }
+
+  .tabla tfoot tr {
+    background: var(--azul-suave) !important;
+  }
+
+  .td-total-val {
+    background: var(--azul-suave) !important;
+  }
+
+  .btn-pdf-wrap { display: none; }
+}
